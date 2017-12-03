@@ -291,3 +291,4 @@ __pycache__/
 /Examples/TxJetiEx/TxJetiEx.vcxproj
 /Examples/TxJetiEx/TxJetiEx.sln
 /Examples/TxJetiExESP32Ble/__vm
+*.sln

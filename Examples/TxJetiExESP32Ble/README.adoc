@@ -1,4 +1,4 @@
-= Jeti Transmitter EX Telemetry for ESP32 BLE =
+﻿= Jeti Transmitter EX Telemetry for ESP32 BLE =
 
  Copyright (C) 2017 by Bernd Wokoeck
 
@@ -17,24 +17,24 @@
 
 == Setup  ==
 
-Wiring
+-- Wiring --
 - Connect your PPM port of your Jeti transmitter DS/DC/14/16/24 to "Serial(2)"
   (pin numbers depend on your board)
 - Take care of a sufficient power supply (max. 3,6 V/500mA)
   i.e. Pololu  D24V5F3 or D24V6F3
 
-Dependencies (arduino libraries)
+-- Dependencies (arduino libraries) --
   - ArduinoJson - https://github.com/bblanchon/ArduinoJson
   - ESP32_BLE, see next section
   
-ESP32_BLE library
+-- ESP32_BLE library --
 - Install ESP32 Arduino according to https://github.com/espressif/arduino-esp32
 - Delete directory [ARDUINO_SKETCHBOOK_DIR]/hardware/espressif/esp32/libraries/BLE
 - Install  ESP32_BLE.zip from this directory as an Arduino library
 - This sketch does not run with the currently released esp32-snippets.
   You have to use the library delivered with this repository
 
-Bluetooth BLE
+-- Bluetooth BLE --
 - Remember that Bluetooth LE is used and not Bluetooth "Classic"
 - Device name is "TxJetiEx"
 - Data is transferred as a stream using some kind of "UART"-emulation, BLE-typical mechanisms as transferring
@@ -47,7 +47,7 @@ Bluetooth BLE
   + Ble Term
   + A couple of other BLE apps
   
-Data format
+-- Data format -- 
 - Sensor data is sent as a data stream in JSON format
 - Timing is critical, since "compressed" Jeti format is expanded to "flat" text data
   and BLE data rate is not particular high 
