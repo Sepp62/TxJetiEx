@@ -1,0 +1,76 @@
+= Jeti Transmitter EX Telemetry for ESP32 BLE =
+
+ Copyright (C) 2017 by Bernd Wokoeck
+
+  Jeti EX transmitter protocol converter  for ESP32
+  Receives transmitter telemetry, converts protocol and sends via Bluetooth BLE
+  
+  DISCLAIMER: Bluetooth is a radio technology concurring with the
+              signal emitted bay your RC transmitter. 
+              You are resonsible on your own for any failure or accident
+
+  Based on ble_uart sample from Neil Kolban - https://github.com/nkolban/esp32-snippets
+
+  Version history:
+
+    0.90   12/03/2017  created (BETA)
+
+== Setup  ==
+
+Wiring
+- Connect your PPM port of your Jeti transmitter DS/DC/14/16/24 to "Serial(2)"
+  (pin numbers depend on your board)
+- Take care of a sufficient power supply (max. 3,6 V/500mA)
+  i.e. Pololu  D24V5F3 or D24V6F3
+
+Dependencies (arduino libraries)
+  - ArduinoJson - https://github.com/bblanchon/ArduinoJson
+  - ESP32_BLE, see next section
+  
+ESP32_BLE library
+- Install ESP32 Arduino according to https://github.com/espressif/arduino-esp32
+- Delete directory [ARDUINO_SKETCHBOOK_DIR]/hardware/espressif/esp32/libraries/BLE
+- Install  ESP32_BLE.zip from this directory as an Arduino library
+- This sketch does not run with the currently released esp32-snippets.
+  You have to use the library delivered with this repository
+
+Bluetooth BLE
+- Remember that Bluetooth LE is used and not Bluetooth "Classic"
+- Device name is "TxJetiEx"
+- Data is transferred as a stream using some kind of "UART"-emulation, BLE-typical mechanisms as transferring
+  sensor values using "characteristic" are NOT used.
+- "Service" UUID is 6E400001-B5A3-F393-E0A9-E50E24DCCA9E
+- "Characteristic" UUID is 6E400003-B5A3-F393-E0A9-E50E24DCCA9E
+- Tested with various bluetooth BLE terminal programs on Android:
+  + Serial Bluetooth Terminal 1.1 (Attention: "Jams" after a few seconds due to weak display performance)
+  + Bluefruit LE app
+  + Ble Term
+  + A couple of other BLE apps
+  
+Data format
+- Sensor data is sent as a data stream in JSON format
+- Timing is critical, since "compressed" Jeti format is expanded to "flat" text data
+  and BLE data rate is not particular high 
+- Data hierarchy is "flat"
+- Attribute names are: 
+  + Data packet:
+      "t"=type, 2="value",
+	  "s"=serial id,
+	  "n"=sensor name,
+	  "i"=sensor id,
+	  "l"=label,
+	  "u"=unit,
+	  "x"=Jeti Ex data type
+	  "v"= finally the value of the measurement
+  + Label packet
+      "t"=type, 1="label",
+	  "s"=serial id,
+	  "n"=sensor name,
+	  "i"=sensor id,
+	  "l"=label,
+	  "u"=unit
+  + Sensor name packet	  
+      "t"=type, 1="label",
+	  "s"=serial id,
+	  "n"=sensor name,
+ 
