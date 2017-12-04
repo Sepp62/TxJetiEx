@@ -292,3 +292,6 @@ __pycache__/
 /Examples/TxJetiEx/TxJetiEx.sln
 /Examples/TxJetiExESP32Ble/__vm
 *.sln
+/Examples/TxJetiExTeensyJson/__vm
+*.vcxproj
+*.filters
