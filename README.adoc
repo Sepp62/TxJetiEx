@@ -12,6 +12,7 @@ Protocol decoder for Jeti EX data output a JETI transmitters (Dx14/Dx16/Dx24).
     0.92   11/13/2017  - bug fix in debug output
                        - 8 bit UART mode bug fix and baud rate tuning.
     0.93   11/15/2017  first experimental shot for ESP32 support
+    0.94   12/05/2017  Examples for ESP32 ands Bluefruit LE UART friend added
    
 == License ==
 
