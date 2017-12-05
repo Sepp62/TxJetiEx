@@ -295,3 +295,4 @@ __pycache__/
 /Examples/TxJetiExTeensyJson/__vm
 *.vcxproj
 *.filters
+/Examples/TxJetiExTeensyBluefruitLE/__vm
