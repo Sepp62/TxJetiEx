@@ -209,7 +209,7 @@ void BleInit()
     if (ble.isVersionAtLeast((char*)"0.6.6"))
       ble.sendCommandCheckOK("AT+HWModeLED=MODE");
     // set power level
-    ble.sendCommandCheckOK("AT+BLEPOWERLEVEL=-20");
+    ble.sendCommandCheckOK("AT+BLEPOWERLEVEL=-40");
   }
   else
     Serial.print("Couldn't find Bluefruit, make sure it's in CoMmanD mode & check wiring?");
